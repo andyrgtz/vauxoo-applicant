@@ -69,8 +69,31 @@ insert into hobbyXemployee (id_employee,id_hobby) values (4,1);
 insert into hobbyXemployee (id_employee,id_hobby) values (4,2);
 
 
+/*Haz los cambios necesarios en la base de datos para poder asignar a los empleados un jefe.
+Un jefe, es también un empleado. 
+Un empleado solo puede tener un jefe. 
+Y un jefe puede tener muchos empleados. */
+ create table boss (
+	id_boss integer not null),
+	constraint pk_boss primary key (id_boss));
+	
+ALTER TABLE employee ADD COLUMN id_boss integer;
+
+ALTER TABLE boss ADD  CONSTRAINT FK_Boss_employee FOREIGN KEY([id_boss])
+REFERENCES employee (id);
+
+ALTER TABLE employee  ADD  CONSTRAINT FK_employee_boss FOREIGN KEY(id_boss)
+REFERENCES boss (id_boss)
+
+--UPDATE films SET kind = 'Dramatic' WHERE kind = 'Drama';
+insert into boss(id_boss) values (1);
+insert into boss(id_boss) values (2);
 
 
+update employee set id_boss =2 where id = 3;
+update employee set id_boss =1 where id = 4;
+update employee set id_boss =2 where id = 1;
+update employee set id_boss =1 where id = 2;
 
 
 
