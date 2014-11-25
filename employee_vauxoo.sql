@@ -9,7 +9,7 @@ CREATE DATABASE employee_employee
 
 /*Crea una tabla de "employee" con los campos "id", "first_name", "Last_Name".*/
 create table employee(
-	id serial not null unique,
+	id integer not null,
 	first_name text not null,
 	Last_Name text not null
 	id_depa integer not null,
@@ -36,10 +36,37 @@ insert into employee_departament(name,description) values(5,'Escolares','Servici
 insert into employee_departament(name,description) values(6,'Electro','Departamento de Electro');
 
 	
-insert into employee(first_name,Last_Name,id_depa) values('Beto','Flores',1);
-insert into employee(first_name,Last_Name,id_depa) values('Miguel','Ortiz',2);
-insert into employee(first_name,Last_Name,id_depa) values('Andrea','Rocio',3);
-insert into employee(first_name,Last_Name,id_depa) values('Hugo','Adan',4);
+insert into employee(id,first_name,Last_Name,id_depa) values(1,'Beto','Flores',1);
+insert into employee(id,first_name,Last_Name,id_depa) values(2,'Miguel','Ortiz',2);
+insert into employee(id,first_name,Last_Name,id_depa) values(3,'Andrea','Rocio',3);
+insert into employee(id,first_name,Last_Name,id_depa) values(4,'Hugo','Adan',4);
+
+/*Crea una tabla llamada "employee_hobby" con los campos "id", "name", "description". */
+create table employee_hobby(
+	id integer not null,
+	name text,
+	description text,
+	constraint pk_employee_hobby primary key (id));
+
+create table hobbyXemployee(
+	id_employee integer not null,
+	id_hobby integer not null);
+
+insert into employee_hobby(id,name,description) values (1,'Futbol','Tardes de fucho');
+insert into employee_hobby(id,name,description) values (2,'Leer','Un libro por la noche');
+insert into employee_hobby(id,name,description) values (3,'Correr','Trotar por las mañanas');
+
+insert into hobbyXemployee (id_employee,id_hobby) values (1,2);
+insert into hobbyXemployee (id_employee,id_hobby) values (1,3);
+
+insert into hobbyXemployee (id_employee,id_hobby) values (2,1);
+insert into hobbyXemployee (id_employee,id_hobby) values (2,2);
+
+insert into hobbyXemployee (id_employee,id_hobby) values (3,1);
+insert into hobbyXemployee (id_employee,id_hobby) values (3,3);
+
+insert into hobbyXemployee (id_employee,id_hobby) values (4,1);
+insert into hobbyXemployee (id_employee,id_hobby) values (4,2);
 
 
 
@@ -58,6 +85,5 @@ insert into employee(first_name,Last_Name,id_depa) values('Hugo','Adan',4);
 
 
 
-
-
+ 
  
